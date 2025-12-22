@@ -1,0 +1,8 @@
+{
+  "name": "Micronauta Landing Page",
+  "description": "A high-conversion multilingual landing page for Micronauta, focusing on local business digital transformation with AI-powered features, WhatsApp integration, and Calendly scheduling.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
