@@ -33,11 +33,45 @@ body {
   border-radius: 10px;
 }
 
-@theme {
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-glow-pulse: glow-pulse 2s ease-in-out infinite;
-  --animate-shimmer: shimmer 2.5s linear infinite;
-  --animate-spin-slow: spin 8s linear infinite;
+@keyframes float {
+  0%, 100% { transform: translateY(0px) }
+  50% { transform: translateY(-20px) }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(252, 202, 163, 0.4),
+                0 0 20px rgba(252, 202, 163, 0.2)
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(252, 202, 163, 0.8),
+                0 0 40px rgba(252, 202, 163, 0.4)
+  }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%) }
+}
+
+@keyframes subtleZoom {
+  0% { transform: scale(1) }
+  100% { transform: scale(1.05) }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
 }
 
 @keyframes float {
