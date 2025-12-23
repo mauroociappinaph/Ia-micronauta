@@ -20,9 +20,11 @@ export interface TranslationSchema {
   methodology: {
     title: string;
     steps: string[];
+    descriptions: string[];
   };
   contact: {
     title: string;
+    subtitle: string;
     cta: string;
   };
   footer: {

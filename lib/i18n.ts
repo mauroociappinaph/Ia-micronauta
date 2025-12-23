@@ -20,10 +20,17 @@ export const translations: Record<'es' | 'en', TranslationSchema> = {
     },
     methodology: {
       title: "Metodología",
-      steps: ["Consultoría Inicial", "Análisis Profundo", "Propuesta Técnica", "Ejecución Estelar"]
+      steps: ["Consultoría Inicial", "Análisis Profundo", "Propuesta Técnica", "Ejecución Estelar"],
+      descriptions: [
+        "Definimos objetivos y alcances reales.",
+        "Auditamos tu presencia actual y competencia.",
+        "Diseñamos el roadmap tecnológico a medida.",
+        "Lanzamos tu proyecto con soporte continuo."
+      ]
     },
     contact: {
       title: "Listos para el despegue",
+      subtitle: "Agenda tu consultoría gratuita hoy y despega.",
       cta: "Agenda tu auditoría"
     },
     footer: {
@@ -48,10 +55,17 @@ export const translations: Record<'es' | 'en', TranslationSchema> = {
     },
     methodology: {
       title: "Methodology",
-      steps: ["Initial Discovery", "Deep Analysis", "Technical Proposal", "Stellar Execution"]
+      steps: ["Initial Discovery", "Deep Analysis", "Technical Proposal", "Stellar Execution"],
+      descriptions: [
+        "We define real goals and scopes.",
+        "We audit your current presence and competition.",
+        "We design the custom technological roadmap.",
+        "We launch your project with continuous support."
+      ]
     },
     contact: {
       title: "Ready for takeoff",
+      subtitle: "Book your free consultation today and liftoff.",
       cta: "Book your audit"
     },
     footer: {
