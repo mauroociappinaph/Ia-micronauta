@@ -13,7 +13,7 @@
 ### ✨ Características Principales
 
 - 🎬 **Video Introductorio Cinematográfico** - Experiencia de entrada inmersiva
-- 🤖 **Chatbot IA Avanzado** - Asistente conversacional con Google Gemini
+- 🤖 **Chatbot IA Avanzado** - Asistente conversacional con Groq (Llama 3.2)
 - 🌐 **Multilingüe** - Soporte completo para español e inglés
 - 📱 **Responsive Design** - Optimizado para todos los dispositivos
 - 🎨 **Diseño Flat Moderno** - Estética minimalista y profesional
@@ -24,7 +24,7 @@
 - **Frontend**: React 19 + TypeScript + Vite
 - **Styling**: Tailwind CSS con diseño personalizado
 - **Animaciones**: Framer Motion
-- **IA**: Google Gemini 3 Flash
+- **IA**: Groq (Llama 3.2 90B)
 - **Estado**: Zustand con persistencia
 - **Routing**: React Router DOM
 - **Build**: Vite con optimización automática
@@ -37,7 +37,7 @@
 
 - **Node.js** (versión 18 o superior)
 - **npm** o **yarn**
-- **Cuenta de Google AI Studio** (para API key de Gemini)
+- **Cuenta de Groq** (para API key de Groq)
 
 ### Instalación y Ejecución
 
@@ -55,7 +55,7 @@
 3. **Configura las variables de entorno:**
    Crea un archivo `.env.local` en la raíz del proyecto:
    ```env
-   GEMINI_API_KEY=tu_api_key_de_google_gemini
+   GROQ_API_KEY=tu_api_key_de_groq
    ```
 
 4. **Ejecuta el servidor de desarrollo:**
@@ -129,7 +129,7 @@ Ia-micronauta/
 
 | Variable | Descripción | Requerida |
 |----------|-------------|-----------|
-| `GEMINI_API_KEY` | API Key de Google Gemini | ✅ |
+| `GROQ_API_KEY` | API Key de Groq | ✅ |
 
 ### Scripts Disponibles
 
