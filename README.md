@@ -65,7 +65,9 @@
    ```
 
 5. **Abre tu navegador:**
-   Ve a `http://localhost:3000` para ver la aplicación
+   Ve a `http://localhost:3001` para ver la aplicación
+
+> **⚠️ Nota de Desarrollo:** Actualmente el chatbot usa llamadas directas a Groq para testing. Para producción, implementa las serverless functions seguras.
 
 ---
 

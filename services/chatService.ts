@@ -8,7 +8,10 @@ import Groq from 'groq-sdk';
  */
 export const generateAIChatResponse = async (userPrompt: string, locale: string, history: { role: 'user' | 'bot'; text: string }[]) => {
   const groqApiKey = import.meta.env.VITE_GROQ_API_KEY;
-  const groq = new Groq({ apiKey: groqApiKey });
+  const groq = new Groq({
+    apiKey: groqApiKey,
+    dangerouslyAllowBrowser: true // Solo para desarrollo - NO usar en producción
+  });
 
   // Convert history to Groq format
   const messages = [
@@ -37,12 +40,12 @@ export const generateAIChatResponse = async (userPrompt: string, locale: string,
     },
     // Convert history to messages
     ...history.map(h => ({
-      role: h.role === 'user' ? 'user' : 'assistant',
+      role: h.role === 'user' ? 'user' as const : 'assistant' as const,
       content: h.text
     })),
     // Current user prompt
     {
-      role: 'user',
+      role: 'user' as const,
       content: userPrompt
     }
   ];
