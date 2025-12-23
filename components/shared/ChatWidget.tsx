@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocaleStore } from '../../stores/useLocaleStore';
 import { buildWhatsAppLink } from '../../lib/whatsapp';
-import { generateAIChatResponse } from '../../services/geminiService';
+import { generateAIChatResponse } from '../../services/chatService';
 
 const CALENDLY_URL = 'https://calendly.com/ciappinamaurooj/quick-call';
 
@@ -16,7 +16,7 @@ const ChatWidget: React.FC = () => {
   const [messages, setMessages] = useState<{ role: 'user' | 'bot'; text: string }[]>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  
+
   const [waData, setWaData] = useState({ name: '', email: '', company: '', msg: '' });
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -34,13 +34,13 @@ const ChatWidget: React.FC = () => {
     if (!input.trim()) return;
     const userText = input;
     setInput('');
-    
+
     const updatedMessages = [...messages, { role: 'user' as const, text: userText }];
     setMessages(updatedMessages);
     setIsTyping(true);
 
     const botResponse = await generateAIChatResponse(userText, locale, updatedMessages);
-    
+
     setIsTyping(false);
     setMessages(prev => [...prev, { role: 'bot', text: botResponse }]);
   };
@@ -70,7 +70,7 @@ const ChatWidget: React.FC = () => {
             <div className="absolute -inset-1 bg-accent/20 blur-2xl rounded-[1.5rem] pointer-events-none"></div>
 
             <div className="bg-[#2d7d78]/95 backdrop-blur-xl h-[380px] sm:h-[420px] rounded-[1.5rem] overflow-hidden flex flex-col shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/20 relative">
-              
+
               <div className="bg-accent/10 border-b border-white/10 px-4 py-3 flex items-center justify-between shrink-0 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent animate-shimmer"></div>
                 <div className="flex items-center gap-2">
@@ -103,7 +103,7 @@ const ChatWidget: React.FC = () => {
                         <span className="text-[8px] font-bold opacity-60">Call rápida con Mauro</span>
                       </div>
                     </motion.button>
-                    
+
                     <motion.button whileHover={{ scale: 1.02, x: 3 }} onClick={() => setStep('WA_FORM')} className="flex items-center gap-3 p-4 rounded-xl bg-[#36958F] text-white text-left border border-white/10 hover:bg-[#3ea8a1] shadow-lg group">
                       <MessageCircle className="w-5 h-5 text-accent shrink-0 group-hover:rotate-12 transition-transform" />
                       <div>
@@ -111,7 +111,7 @@ const ChatWidget: React.FC = () => {
                         <span className="text-[8px] text-white/60">Respuesta rápida</span>
                       </div>
                     </motion.button>
-                    
+
                     <motion.button whileHover={{ scale: 1.02, x: 3 }} onClick={() => { setStep('AI_CHAT'); setMessages([{ role: 'bot', text: locale === 'es' ? '¡Hola! Soy Astro. ¿Cómo te llamas?' : 'Hi! I am Astro. What is your name?' }]); }} className="flex items-center gap-3 p-4 rounded-xl bg-[#36958F] text-white text-left border border-white/10 hover:bg-[#3ea8a1] shadow-lg group">
                       <Bot className="w-5 h-5 text-accent shrink-0 group-hover:scale-110 transition-transform" />
                       <div>

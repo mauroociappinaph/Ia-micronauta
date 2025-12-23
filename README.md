@@ -38,6 +38,7 @@
 - **Node.js** (versión 18 o superior)
 - **npm** o **yarn**
 - **Cuenta de Groq** (para API key de Groq)
+- **Cuenta en Vercel/Netlify** (para desplegar las serverless functions)
 
 ### Instalación y Ejecución
 
@@ -78,6 +79,8 @@ Ia-micronauta/
 │   │   ├── videos/         # Videos introductorios
 │   │   └── images/         # Imágenes adicionales
 │   └── index.html
+├── api/
+│   └── chat.js             # Serverless function para IA segura
 ├── src/
 │   ├── components/
 │   │   ├── shared/         # Componentes reutilizables
@@ -88,7 +91,7 @@ Ia-micronauta/
 │   ├── pages/
 │   │   └── LandingPage.tsx # Página principal
 │   ├── services/
-│   │   └── geminiService.ts # Servicio de IA
+│   │   └── chatService.ts  # Cliente para API de IA segura
 │   ├── stores/
 │   │   └── useLocaleStore.ts # Gestión de idioma
 │   ├── lib/
@@ -123,13 +126,50 @@ Ia-micronauta/
 
 ---
 
+## 🔐 Arquitectura de Seguridad
+
+### 🛡️ Protección de API Keys
+
+Este proyecto implementa una **arquitectura de seguridad avanzada** para proteger las claves de API:
+
+1. **Frontend Seguro**: El frontend nunca expone las API keys
+2. **Serverless Functions**: Las llamadas a IA pasan por funciones serverless seguras
+3. **Variables de Entorno**: Las claves se almacenan en el backend, no en el cliente
+
+### 📡 Flujo de Comunicación Seguro
+
+```
+Usuario → Frontend → /api/chat → Serverless Function → Groq API → Respuesta Segura
+```
+
+### 🔧 Configuración de Backend
+
+Para desplegar las serverless functions:
+
+#### **Vercel:**
+```bash
+npm i -g vercel
+vercel --prod
+```
+
+#### **Netlify:**
+```bash
+npm i -g netlify-cli
+netlify deploy --prod
+```
+
+**Variables de entorno en el backend:**
+- `GROQ_API_KEY`: Tu clave secreta de Groq (solo en el servidor)
+
+---
+
 ## 🔧 Configuración Avanzada
 
 ### Variables de Entorno
 
-| Variable | Descripción | Requerida |
-|----------|-------------|-----------|
-| `GROQ_API_KEY` | API Key de Groq | ✅ |
+| Variable | Descripción | Requerida | Contexto |
+|----------|-------------|-----------|----------|
+| `GROQ_API_KEY` | API Key de Groq | ✅ | Backend (Serverless Functions) |
 
 ### Scripts Disponibles
 
