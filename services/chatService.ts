@@ -53,7 +53,7 @@ export const generateAIChatResponse = async (userPrompt: string, locale: string,
   try {
     const chatCompletion = await groq.chat.completions.create({
       messages: messages,
-      model: 'llama-3.2-90b-text-preview',
+      model: 'llama3-8b-8192',
       temperature: 0.7,
       max_tokens: 400,
       top_p: 1,

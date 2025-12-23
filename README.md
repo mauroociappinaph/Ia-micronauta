@@ -24,7 +24,7 @@
 - **Frontend**: React 19 + TypeScript + Vite
 - **Styling**: Tailwind CSS con diseño personalizado
 - **Animaciones**: Framer Motion
-- **IA**: Groq (Llama 3.2 90B)
+- **IA**: Groq (Llama 3.2 8B)
 - **Estado**: Zustand con persistencia
 - **Routing**: React Router DOM
 - **Build**: Vite con optimización automática
